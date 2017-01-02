@@ -14,7 +14,7 @@ To use this script, you need:
 
 Edit the file "Quick-Install-Options.ps1" and modify it to fit your needs. At a minimum, you need to specify valid locations for the installer and licenses. The rest of the defaults should be good enough.
 
-Run the script (as Administrator) to launch the CD installation process. At the end of the CM Installer your machine will reboot without warning.
+Run the Web-8.5-Quick-Install.ps1 script (as Administrator) to launch the CM installation process. At the end of the CM Installer your machine will reboot without warning.
 Once the machine is rebooted, run the script again and it will continue.
 
 # What do you get?
