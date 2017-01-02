@@ -331,6 +331,7 @@ Function Install-ContentDeliveryServices()
                               " -enable-deployer-combined" +
                               " -enable-preview" +
                               " -enable-session" +
+                              " -enable-context" +
                               " -auto-register" +
                               " -target-folder `"" + $setupOptions.CD_SERVICES_ROOT + "`""
     $quickInstallScript = $setupOptions.QUICK_INSTALL_PATH + "\quickinstall.ps1"
