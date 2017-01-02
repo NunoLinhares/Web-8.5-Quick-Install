@@ -24,16 +24,18 @@ Param (
     [Parameter(Mandatory=$false)]
     [switch]$stagingOnly,
 
-    # Changes by Nuno for auto-install
-    [Parameter(Mandatory=$true)]
+    # If specified, we will use this as the location for the Discovery Service. Otherwise we'll ask the user.
+    [Parameter(Mandatory=$false)]
     [string]$discoveryServiceUrl,
 
-    [Parameter(Mandatory=$true)]
+    # If specified, we will use this as the Client ID to authenticate against the Discovery Service. Otherwise we'll ask the user.
+    [Parameter(Mandatory=$false)]
     [string]$oauthClientId,
 
-    [Parameter(Mandatory=$true)]
+    # If specified, we will use this as the Client ID to authenticate against the Discovery Service. Otherwise we'll ask the user.
+    [Parameter(Mandatory=$false)]
     [string]$oauthClientSecret
-
+    
 
     )
 
@@ -82,14 +84,16 @@ function Get-CdEnvironment($purpose)
     $cdEnvironment = $cdEnvironments | Where { $_.EnvironmentPurpose -eq $purpose }
     if (!$cdEnvironment)
     {
-        #Write-Host "Please provide information for the '$purpose' CD Environment:"
+        Write-Host "Please provide information for the '$purpose' CD Environment:"
         do
         {
+            if($discoveryServiceUrl -eq $null) {$discoveryServiceUrl = Read-Host "`tEnter Discovery Service URL (leave empty if you don't want to configure it)"}
             if (!$discoveryServiceUrl) { return $null }
 
-            
+            if($oauthClientId -eq $null) {$oauthClientId = Read-Host "`tEnter OAuth Client ID (leave empty if OAuth is not used)"}
             if ($oauthClientId)
             {
+                if($oauthClientSecret -eq $null) {$oauthClientSecret = Read-Host "`tEnter OAuth Client Secret"}
                 $cdEnvironment = Add-TtmCdEnvironment `
                     -EnvironmentPurpose $purpose `
                     -DiscoveryEndpointUrl $discoveryServiceUrl `
