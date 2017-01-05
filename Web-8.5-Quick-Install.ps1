@@ -31,6 +31,11 @@ else
 ################################################################################
 #Quick Install Functions
 
+Function Get-MemorySize()
+{
+    return (Get-CimInstance -ClassName 'Cim_PhysicalMemory' | Measure-Object -Property Capacity -Sum).Sum / 1MB
+}
+
 Function IsDatabaseAvailable([string]$DBName)
 {
     $result = Invoke-Sqlcmd ("SELECT [name] from sys.databases WHERE [name] = '$DBNAME'")
@@ -428,6 +433,15 @@ Function Install-DxaCd()
 
 ####################################################################################################################
 
+
+# Yes, I do know that 8GB = 8192, not 8000 - but I'm trying to account for hardware vendors with fuzzy math skills.
+# Anyway, if the software won't work with 8000 MB then it's not the extra 192 that will make a difference.
+[int] $mem = Get-MemorySize
+
+if($mem -lt 8000)
+{
+    Write-Warning "You don't seem to have just enough memory... we recommend at least 8GB for a staging-only setup, and 12 GB for staging + live setups."
+}
 
 Write-Host "######## STARTING CM Database"
 if(IsDatabaseAvailable($setupOptions.CM_DB_NAME))
