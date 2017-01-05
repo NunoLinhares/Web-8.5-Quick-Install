@@ -23,6 +23,13 @@ else
     exit
 }
 
+# Check if SQL Server is installed, exit if not
+if(-not (Test-Path "HKLM:\Software\Microsoft\Microsoft SQL Server\Instance Names\SQL"))
+{
+    Write-Error "SQL Server could not be detected! This script will exit now."
+    exit
+}
+
 
 ################################################################################
 #
