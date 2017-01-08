@@ -9,6 +9,7 @@ To use this script, you need:
 * SDL Web 8.5 installer and valid licenses
 * Windows 2012 or higher 
 * MSSQL (any of the versions supported by SDL Web)
+* Note if IIS is already installed, stop and delete the default website before running this script.  If IIS is not installed, the script will install IIS and take care of the default website too.
 
 # Instructions
 
