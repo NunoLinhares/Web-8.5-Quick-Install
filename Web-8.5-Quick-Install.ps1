@@ -350,6 +350,14 @@ Function Install-ContentDeliveryServices()
 
     Invoke-Expression "& `"$quickInstallScript`" $quickInstallParameters"
 
+    # HACK
+    # https://github.com/NunoLinhares/Web-8.5-Quick-Install/issues/14
+    sc.exe config SDLWebContextService start=delayed-auto
+    sc.exe config SDLWebDeployerService start=delayed-auto
+    sc.exe config SDLWebSessionContentService start=delayed-auto
+    sc.exe config SDLWebSessionPreviewService start=delayed-auto
+
+
 }
 
 
