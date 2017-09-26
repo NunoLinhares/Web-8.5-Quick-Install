@@ -10,7 +10,7 @@ $setupOptions.CD_LICENSE_FILE="D:\Licenses\cd_licenses.xml"
 $setupOptions.CM_LICENSE_FILE="D:\Licenses\license.xml"
 $setupOptions.SQL_SERVER_PORT = "1433"
 $setupOptions.CD_SERVICES_ROOT = "C:\SDL\Web"
-$setupOptions.URL_DXA = "https://community.sdl.com/developers/tridion_developer/m/mediagallery/852/download"
+$setupOptions.URL_DXA = "https://docs.sdl.com/DXA/DotNET/1.7/Download/"
 $setupOptions.URL_CORE_SERVICE_PS = "https://raw.githubusercontent.com/pkjaer/tridion-powershell-modules/master/CoreService/Installation/Install.ps1"
 
 # CM Database Options
