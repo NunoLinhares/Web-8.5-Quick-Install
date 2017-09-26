@@ -531,6 +531,7 @@ else
 {
     Write-Host "Preparing to install Tridion. This script will exit and your system will reboot once the installer is done."
     Write-Host "Run this script again after rebooting to continue"
+    Write-Host "You can check %PROGRAMDATA\SDL\SDLWeb\Logs for CM installer progress information"
     InstallTridionContentManager
 
     exit
